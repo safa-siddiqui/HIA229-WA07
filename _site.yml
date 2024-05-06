@@ -1,0 +1,21 @@
+name: "myname_website"
+title: "Safa's Website" #website title
+theme: my_theme.css
+description: |
+  Safa's  Website #doesn't show anywhere
+output_dir: "docs" #DO NOT CHANGE THIS
+navbar: 
+  logo: logo.png
+  href: index.html
+  right:
+    - text: Home #Home tab name
+      href: index.html #Where the home button takes you
+    - text: Shiny App
+      href: shiny_app.html
+    - text: Dear Data Postcard
+      href: deardata.html
+    - text: New Analysis
+      href: newanalysis.html
+output: distill::distill_article
+
+#datasets can be found on kraggle.com and dataisplural.com

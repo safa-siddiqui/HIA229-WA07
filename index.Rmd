@@ -1,0 +1,20 @@
+---
+title: "Welcome!"
+image: "safa_pic.jpeg"
+color1: "lightpink"
+color2: "lavender"
+angle: 130
+links:
+  - label: GitHub
+    url: "https://github.com/safa-siddiqui"
+  - label: LinkedIn
+  - label: Email
+    url: "mailto:safa.siddiqui@ymail.com"
+output:
+  postcards::onofre
+site: distill::distill_website
+---
+ 
+I am a Master of Public Health student at the [Tufts University School of Medicine](https://medicine.tufts.edu/) focusing in epidemiology and biostatistics. My academic background is an Honours Bachelor of Science degree in mathematics, with a double-minor in biology and English from the [University of Toronto](https://www.utoronto.ca/). I was born and raised in Ottawa, Canada. I moved to Toronto for my undergraduate degree, and am now living in Boston.
+
+---

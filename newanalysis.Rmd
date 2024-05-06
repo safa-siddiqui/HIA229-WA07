@@ -1,0 +1,54 @@
+---
+title: "New Analysis"
+description: |
+  This page showcases one new data analysis and visualization I created using everything I learned in HIA229.
+color1: "lightpink"
+color2: "lavender"
+angle: 130
+output:
+  postcards::onofre
+---
+
+The scatterplot below depicts video games. Global sales (in millions) are graphed against critic scores. The color of each point corresponds to the game genre. Mean global sales and critic scores are also shown with the two reference lines. This graph conveys how theme relates to both sales and reception of games. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+videogames <- read.csv("videogames.csv")
+
+videogames_clean <- videogames %>%
+  filter(!is.na(Critic_Score) & !is.na(Global_Sales) & !is.na(Genre) & !is.na(Publisher))
+
+mean_critic_score <- mean(videogames_clean$Critic_Score, na.rm = TRUE)
+mean_global_sales <- mean(videogames_clean$Global_Sales, na.rm = TRUE)
+
+ggplot(videogames_clean, aes(x = Critic_Score, y = Global_Sales, color = Genre)) +
+  geom_jitter(alpha = 0.4, shape = 18, size = 2) +  
+  geom_vline(xintercept = mean_critic_score, linetype = "dotted", color = "black", size = 0.7) +  
+  geom_hline(yintercept = mean_global_sales, linetype = "dotted", color = "black", size = 0.7) +  
+  annotate("text", x = mean_critic_score, y = max(videogames_clean$Global_Sales, na.rm = TRUE), 
+           label = "Mean Critic Score", vjust = -0.05, size = 3) + 
+  annotate("text", x = max(videogames_clean$Critic_Score, na.rm = TRUE), y = mean_global_sales, 
+           label = "Mean Global Sales", hjust = 0.8, size = 3,) +  #
+  labs(
+    title = "Critic Score vs. Global Sales by Genre",
+    x = "Critic Score",
+    y = "Global Sales (in millions)",
+    color = "Genre"
+  ) +
+  theme_bw() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),  
+    axis.text.x = element_text(angle = 45, hjust = 1),  
+    legend.position = "top"
+  )
+```
+
+
+
+
