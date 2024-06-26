@@ -9,13 +9,15 @@ output:
   postcards::onofre
 ---
 
-The scatterplot below depicts video games. Global sales (in millions) are graphed against critic scores. The color of each point corresponds to the game genre. Mean global sales and critic scores are also shown with the two reference lines. This graph conveys how theme relates to both sales and reception of games. 
+The scatterplot below illustrates the relationship between global sales (in millions) and critic scores for various video games. Each point represents a video game, with the color indicating its genre, enhancing categorical differentiation. The plot includes jittering to minimize overplotting, making it easier to distinguish individual points.
+
+Two reference lines, drawn at the mean critic score and mean global sales, serve as benchmarks. These lines, coupled with their respective annotations, provide a quick visual reference to understand how individual games perform relative to the average. The use of these statistical measures helps in identifying outliers and patterns within the data. This visualization not only demonstrates the dispersion and central tendency of the data but also highlights the genre-wise distribution and its impact on both sales and critical reception, offering a comprehensive overview of trends within the video game industry.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 library(ggplot2)
 library(dplyr)
 
@@ -34,7 +36,7 @@ ggplot(videogames_clean, aes(x = Critic_Score, y = Global_Sales, color = Genre))
   annotate("text", x = mean_critic_score, y = max(videogames_clean$Global_Sales, na.rm = TRUE), 
            label = "Mean Critic Score", vjust = -0.05, size = 3) + 
   annotate("text", x = max(videogames_clean$Critic_Score, na.rm = TRUE), y = mean_global_sales, 
-           label = "Mean Global Sales", hjust = 0.8, size = 3,) +  #
+           label = "Mean Global Sales", hjust = 0.8, size = 3) + 
   labs(
     title = "Critic Score vs. Global Sales by Genre",
     x = "Critic Score",
@@ -48,7 +50,3 @@ ggplot(videogames_clean, aes(x = Critic_Score, y = Global_Sales, color = Genre))
     legend.position = "top"
   )
 ```
-
-
-
-
