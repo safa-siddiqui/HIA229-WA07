@@ -50,3 +50,7 @@ ggplot(videogames_clean, aes(x = Critic_Score, y = Global_Sales, color = Genre))
     legend.position = "top"
   )
 ```
+
+
+
+
