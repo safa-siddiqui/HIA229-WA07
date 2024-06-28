@@ -14,8 +14,6 @@ navbar:
       href: shiny_app.html
     - text: Dear Data Postcard
       href: deardata.html
-    - text: New Analysis
-      href: newanalysis.html
 output: distill::distill_article
 
 #datasets can be found on kraggle.com and dataisplural.com
